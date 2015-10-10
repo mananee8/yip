@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:new]
+  before_filter :authenticate_user!, :except => [:new, :create]
 
   def new
     @customer = Customer.new
@@ -8,6 +8,19 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @customer }
+    end
+  end
+  
+  def create
+    @customer = Customer.new(customer_params)
+
+    respond_to do |format|
+      if @customer.save
+        @customer.user.add_role :customer
+        format.html { redirect_to dashboard_index_url, notice: 'Customer signup successfully completed.' }
+      else
+        format.html { redirect_to customer_signup_path, alert: @customer.errors.full_messages.join("<br />") }
+      end
     end
   end
   

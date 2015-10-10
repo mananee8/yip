@@ -13,6 +13,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify', github: 'EppO/rolify', branch: 'master'
 gem 'paperclip'
+gem "nested_form"
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'

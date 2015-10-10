@@ -1,0 +1,43 @@
+<h2>Providers</h2>
+<div><%= link_to "Add Provider", new_provider_url, :method => 'get', :class => 'btn btn-primary' %></div>
+
+<% if !@providers.empty? %>
+  <div class="table-responsive">
+    <table data-toggle="table" class="table table-bordered table-hover top-margin-20">
+      <tr>
+        <th>Title</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Suffix(es)</th>
+        <th>Email</th>
+        <th>Office Phone</th>
+        <th>Mobile Phone</th>
+        <th>Fax</th>
+        <th>Website</th>
+        <th>Affiliated Companies</th>
+        <th>Company Name</th>
+        <th>Profession</th>
+        <th></th></tr></thead><tbody>
+      <% i = 0 %>
+      <% @providers.each do | provider | %>
+        <tr>
+          <td><%= provider.title %></td>
+          <td><%= provider.try(:first_name) %></td>
+          <td><%= provider.try(:last_name) %></td>
+          <td><%= provider.try(:email) %></td>
+          <td><%= provider.office_phone %></td>
+          <td><%= provider.mobile_phone %></td>
+          <td><%= provider.fax %></td>
+          <td><%= provider.website %></td>
+          <td><%= provider.affiliated_companies %></td>
+          <td><%= provider.company_name %></td>
+          <td><%= provider.try(:provider_profession).try(:name) %></td>
+          <td><%= link_to "View", provider_path(provider), :method => 'get' %>&nbsp;|&nbsp;<%= link_to "Edit", edit_provider_path(provider), :method => 'get' %>&nbsp;|&nbsp;<%= link_to "Delete", provider_path(provider), :method => 'delete', :data => {confirm: "Are you sure?"} %></td>
+        </tr>
+      <% end %>
+    </tbody></table>
+    <%= will_paginate @providers %>
+  </div>
+<% else %>
+  <p class="top-margin-20">There are no providers.</p>
+<% end %>
