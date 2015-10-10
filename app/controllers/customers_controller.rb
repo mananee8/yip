@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
         sign_in @customer.user
         format.html { redirect_to dashboard_index_url, notice: 'Customer signup successfully completed.' }
       else
-        format.html { redirect_to customer_signup_path, alert: @customer.errors.full_messages.join("<br />").html_safe }
+        format.html { redirect_to customer_signup_path, alert: @customer.errors.full_messages.join("<br />") }
       end
     end
   end

@@ -1,42 +1,51 @@
-<%= simple_nested_form_for(@business, html: { :class=>"form form-horizontal" }) do |f| %>
-  <div class="field">
-    <span>Business Name</span><br />
-    <%= f.text_field :name %>
-  </div>
-    
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-
-  <%= f.fields_for :user do |u| %>
-    <div class="field">
-      <span>Email</span><br />
-      <%= u.email_field :email, autofocus: true %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-4 col-sm-offset-4'>
+      <h1 class='text-center title'>Business Sign Up</h1>
+      <%= simple_nested_form_for(@business, html: { :class=>"form form-horizontal" }) do |f| %>
+        <div class="form-group">
+          <div class='controls with-icon-over-input'>
+            <%= f.text_field :name, :class => 'form-control', :placeholder => 'Business name', :input_html => {:size => 50} %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class='controls with-icon-over-input'>
+            <%= f.text_field :address, :class => 'form-control', :placeholder => 'Business address', :input_html => {:size => 50} %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class='controls with-icon-over-input'>
+            <%= f.text_field :location, :class => 'form-control', :placeholder => 'Business location', :input_html => {:size => 50} %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class='controls with-icon-over-input'>
+            <%= f.text_field :phone, :class => 'form-control', :placeholder => 'Business phone', :input_html => {:size => 50} %>
+          </div>
+        </div>
+        
+        <%= f.fields_for :user do |u| %>
+          <div class='form-group'>
+            <div class='controls with-icon-over-input'>
+              <%= u.text_field :email, required: true, placeholder: "Email", class: "form-control", label: "Email", :input_html => {:size => 50} %>
+            </div>
+          </div>
+          <div class='form-group'>
+            <div class='controls with-icon-over-input'>
+              <%= u.password_field :password, required: true, placeholder: "password", class: "form-control", label: "Password", :input_html => {:size => 50} %>
+            </div>
+          </div>
+          <div class='form-group'>
+            <div class='controls with-icon-over-input'>
+              <%= u.password_field :password_confirmation, required: true, placeholder: "password confirmation", class: "form-control", label: "Password Confirmation", :input_html => {:size => 50} %>
+            </div>
+          </div>
+        <% end %>
+        <button class='btn btn-block'>Sign Up</button>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= u.label :password %><br />
-      <%= u.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= u.label :password_confirmation %><br />
-      <%= u.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-  <% end %>
-  
-  <div class="actions">
-    <%= f.submit "Sign Up" %>
   </div>
-<% end %>
+</div>

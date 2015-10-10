@@ -16,6 +16,10 @@ gem 'paperclip'
 gem "nested_form"
 gem 'simple_form'
 
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

@@ -20,7 +20,7 @@ class BusinessesController < ApplicationController
         sign_in @business.user
         format.html { redirect_to dashboard_index_url, notice: 'Business signup successfully completed.' }
       else
-        format.html { redirect_to business_signup_path, alert: @business.errors.full_messages.join("<br />").html_safe }
+        format.html { redirect_to business_signup_path, alert: @business.errors.full_messages.join("<br />") }
       end
     end
   end
