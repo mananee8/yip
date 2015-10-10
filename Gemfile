@@ -19,6 +19,7 @@ gem 'simple_form'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug'
