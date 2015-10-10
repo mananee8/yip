@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'cancancan'
 gem 'rolify', github: 'EppO/rolify', branch: 'master'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'
