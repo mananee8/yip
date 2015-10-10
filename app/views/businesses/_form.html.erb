@@ -1,0 +1,42 @@
+<%= simple_nested_form_for(@business, html: { :class=>"form form-horizontal" }) do |f| %>
+  <div class="field">
+    <span>Business Name</span><br />
+    <%= f.text_field :name %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+
+  <%= f.fields_for :user do |u| %>
+    <div class="field">
+      <span>Email</span><br />
+      <%= u.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= u.label :password %><br />
+      <%= u.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= u.label :password_confirmation %><br />
+      <%= u.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  <% end %>
+  
+  <div class="actions">
+    <%= f.submit "Sign Up" %>
+  </div>
+<% end %>

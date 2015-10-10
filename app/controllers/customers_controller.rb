@@ -17,9 +17,10 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         @customer.user.add_role :customer
+        sign_in @customer.user
         format.html { redirect_to dashboard_index_url, notice: 'Customer signup successfully completed.' }
       else
-        format.html { redirect_to customer_signup_path, alert: @customer.errors.full_messages.join("<br />") }
+        format.html { redirect_to customer_signup_path, alert: @customer.errors.full_messages.join("<br />").html_safe }
       end
     end
   end
