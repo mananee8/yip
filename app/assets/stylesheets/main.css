@@ -2,7 +2,7 @@
   General Style
 --------------------------------------------------------------------------*/
 body {
-  background: url(/assets/page-background.png);
+  background-image: url('page-background.png');
 }
 .section {
   padding: 30px 0;
