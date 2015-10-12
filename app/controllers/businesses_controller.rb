@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
+  before_filter :load_business, only: [:show, :edit, :update]
   
   def new
     @business = Business.new
@@ -24,10 +25,34 @@ class BusinessesController < ApplicationController
       end
     end
   end
+  
+  def show
+  end
+  
+  def edit
+  end
+  
+  def update
+    respond_to do |format|
+      if @customer.update_attributes(update_business_params)
+        format.html { redirect_to business_path(@business), notice: 'Profile has been successfully updated.' }
+      else
+        format.html { redirect_to edit_business_path(@business), alert: @business.errors.full_messages.join("<br />") }
+      end
+    end
+  end
 
   private
   def business_params    
     params.require(:business).permit(:name, :phone, :add1, :add2, :city, :state, :zip, :photo, :user_attributes => [:id, :email, :password, 
       :password_confirmation])
+  end
+  
+  def update_business_params    
+    params.require(:business).permit(:name, :phone, :add1, :add2, :city, :state, :zip, :photo)
+  end
+  
+  def load_business
+    @business = current_user.profile
   end
 end
