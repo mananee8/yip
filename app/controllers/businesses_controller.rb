@@ -34,7 +34,7 @@ class BusinessesController < ApplicationController
   
   def update
     respond_to do |format|
-      if @customer.update_attributes(update_business_params)
+      if @business.update_attributes(update_business_params)
         format.html { redirect_to business_path(@business), notice: 'Profile has been successfully updated.' }
       else
         format.html { redirect_to edit_business_path(@business), alert: @business.errors.full_messages.join("<br />") }
