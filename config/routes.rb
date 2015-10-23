@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root 'dashboard#index'
   
   resources :dashboard
-  resources :customers
+  resources :customers do
+    member do
+      get :business_search
+    end
+  end
   resources :businesses
 end

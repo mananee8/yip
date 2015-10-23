@@ -53,6 +53,6 @@ class BusinessesController < ApplicationController
   end
   
   def load_business
-    @business = current_user.profile
+    @business = (current_user.profile.class == Business ? current_user.profile : Business.find(params[:id]))
   end
 end

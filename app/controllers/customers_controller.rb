@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
-  before_filter :load_customer, only: [:show, :edit, :update]
+  before_filter :load_customer, only: [:show, :edit, :update, :business_search]
 
   def new
     @customer = Customer.new
@@ -40,6 +40,9 @@ class CustomersController < ApplicationController
         format.html { redirect_to edit_customer_path(@customer), alert: @customer.errors.full_messages.join("<br />") }
       end
     end
+  end
+  
+  def business_search
   end
   
   private
