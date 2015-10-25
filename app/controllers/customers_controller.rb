@@ -43,6 +43,25 @@ class CustomersController < ApplicationController
   end
   
   def business_search
+    @businesses = Business.all  
+  end
+  
+  def search
+    if !params[:search_name].blank? || !params[:search_location].blank?
+      if !params[:search_name].blank? && !params[:search_location].blank?
+        @businesses = Business.where("name like ? and (add1 like ? or add2 like ? or state like ? or city like ?)", "%#{params[:search_name]}%", "%#{params[:search_location]}%", "%#{params[:search_location]}%", "%#{params[:search_location]}%", "%#{params[:search_location]}%")
+      elsif !params[:search_name].blank? && params[:search_location].blank?
+        @businesses = Business.where("name like ?", "%#{params[:search_name]}%")
+      elsif params[:search_name].blank? && !params[:search_location].blank?
+        @businesses = Business.where("add1 like ? or add2 like ? or state like ? or city like ?", "%#{params[:search_location]}%", "%#{params[:search_location]}%", "%#{params[:search_location]}%", "%#{params[:search_location]}%")
+      end  
+    end
+    
+    if @businesses.blank?
+      flash[:notice] = "Something is wrong, Please try again."
+      @businesses = Business.all  
+    end  
+    render :business_search
   end
   
   private

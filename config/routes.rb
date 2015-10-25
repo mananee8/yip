@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   get 'customer/signup', :to => 'customers#new'
   get 'business/signup', :to => 'businesses#new'
+  get 'search', :to => 'customers#search'
   root 'dashboard#index'
   
   resources :dashboard
