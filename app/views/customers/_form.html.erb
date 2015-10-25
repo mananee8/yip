@@ -56,6 +56,7 @@
               <div class='form-group'>
                 <label for="name"><i class="icon-user"></i> <b>Password Confirmation</b></label>
                 <%= u.password_field :password_confirmation, required: true, class: "form-control", label: "Password Confirmation", :input_html => {:size => 50} %>
+                <div class="registrationFormAlert" id="divCheckPasswordMatch">
               </div>
             <% end %>
             <div class="form-group">
