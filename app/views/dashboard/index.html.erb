@@ -2,10 +2,24 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Dashboard</h1>
+        <h1>Business List</h1>
       </div>
     </div>
   </div>
 </div>
 
-<div style="min-height: 400px !important;"></div> 
+<div style="min-height: 400px !important;">
+  <div class="section">
+    <div class="container">
+      <% unless @businesses.blank?%>
+        <% @businesses.each do |business| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= link_to business.name, business_path(business) %>
+            </div>
+          </div>
+        <% end %>  
+      <% end %>  
+    </div>
+  </div>
+</div> 
