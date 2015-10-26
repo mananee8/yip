@@ -28,18 +28,22 @@ function checkPasswordMatchCustomer() {
     var password = $("#customer_user_attributes_password").val();
     var confirmPassword = $("#customer_user_attributes_password_confirmation").val();
 
-    if (password != confirmPassword)
-        $("#divCheckPasswordMatch").html("Passwords do not match!");
-    else
-        $("#divCheckPasswordMatch").html("Passwords match.");
+    if (password != confirmPassword){
+      $("#divCheckPasswordMatch").html("Passwords do not match!");
+    }    
+    else {
+      $("#divCheckPasswordMatch").html("Passwords match.");
+    }    
 }
 
 function checkPasswordMatchBusiness() {
     var password = $("#business_user_attributes_password").val();
     var confirmPassword = $("#business_user_attributes_password_confirmation").val();
 
-    if (password != confirmPassword)
-        $("#divCheckPasswordMatch").html("Passwords do not match!");
-    else
-        $("#divCheckPasswordMatch").html("Passwords match.");
+    if (password != confirmPassword) {
+      $("#divCheckPasswordMatch").html("Passwords do not match!");
+    }    
+    else {
+      $("#divCheckPasswordMatch").html("Passwords match.");
+    }    
 }

@@ -15,7 +15,7 @@
         <div class="basic-login">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <label for="login-username"><i class="icon-user"></i> <b>Username</b></label>
+              <label for="login-username"><i class="icon-user"></i> <b>Email</b></label>
               <%= f.email_field :email, :required => true, :class => 'form-control', :autofocus => true, :input_html => {:size => 50} %>
             </div>
             <div class="form-group">
